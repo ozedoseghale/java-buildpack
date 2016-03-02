@@ -22,7 +22,7 @@ module JavaBuildpack
   module Framework
 
     # Encapsulates the functionality for enabling the Postgres JDBC client.
-    class Lame < JavaBuildpack::Component::VersionedDependencyComponent
+    class Sox < JavaBuildpack::Component::VersionedDependencyComponent
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
