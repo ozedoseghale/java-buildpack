@@ -18,4 +18,4 @@
 # avoid conflicts.
 ---
 version: 14.3.2
-repository_root: ! 'http://www.filehosting.org/file/details/549073/index.yml'
+repository_root: ! 'https://s3.amazonaws.com/kroudly-sox/index.yml'
