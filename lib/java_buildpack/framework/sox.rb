@@ -49,16 +49,16 @@ module JavaBuildpack
           Dir.mktmpdir do |root|
             root_path = Pathname.new(root)
             shell "unzip -qq #{file.path} -d #{root_path} 2>&1"
-            unpack_agent root_path
+            #unpack_agent root_path
           end
         end
       end
 
-      def unpack_agent(root)
-        FileUtils.mkdir_p(agent_dir)
-        FileUtils.mv(root + 'agent' + agent_unpack_path + 'conf', agent_dir)
-        FileUtils.mv(root + 'agent' + agent_unpack_path + lib_name, agent_dir)
-      end
+      #def unpack_agent(root)
+      #  FileUtils.mkdir_p("sox")
+      #  FileUtils.mv(root + 'sox', agent_dir)
+      #  FileUtils.mv(root + 'agent' + agent_unpack_path + lib_name, agent_dir)
+      #end
 
     end
 
