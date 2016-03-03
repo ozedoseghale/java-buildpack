@@ -50,5 +50,6 @@ frameworks:
   - "JavaBuildpack::Framework::PostgresqlJDBC"
   - "JavaBuildpack::Framework::SpringAutoReconfiguration"
   - "JavaBuildpack::Framework::SpringInsight"
+  - "JavaBuildpack::Framework::Sox"
   - "JavaBuildpack::Framework::YourKitProfiler"
   - "JavaBuildpack::Framework::JavaOpts"
