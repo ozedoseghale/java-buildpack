@@ -21,16 +21,18 @@ require 'java_buildpack/framework'
 module JavaBuildpack
   module Framework
 
-    # Encapsulates the functionality for enabling the Postgres JDBC client.
+    # Encapsulates the functionality for enabling Sox.
     class Sox < JavaBuildpack::Component::VersionedDependencyComponent
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
-        download_tar
+        download(@version, @uri) { |file| expand file }
+        @droplet.copy_resources
       end
 
       # (see JavaBuildpack::Component::BaseComponent#release)
       def release
+        
       end
 
       protected
@@ -42,7 +44,26 @@ module JavaBuildpack
 
       private
 
+      def expand(file)
+        with_timing "Expanding Sox to #{@droplet.sandbox.relative_path_from(@droplet.root)}" do
+          Dir.mktmpdir do |root|
+            root_path = Pathname.new(root)
+            shell "unzip -qq #{file.path} -d #{root_path} 2>&1"
+            unpack_agent root_path
+          end
+        end
+      end
+
+      def unpack_agent(root)
+        FileUtils.mkdir_p(agent_dir)
+        FileUtils.mv(root + 'agent' + agent_unpack_path + 'conf', agent_dir)
+        FileUtils.mv(root + 'agent' + agent_unpack_path + lib_name, agent_dir)
+      end
+
     end
 
   end
 end
+
+
+
