@@ -26,6 +26,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Component::BaseComponent#compile)
       def compile
+	FileUtils.mkdir_p("#{@droplet.sandbox}")
         download(@version, @uri) { |file| expand file }
         #@droplet.copy_resources
       end
@@ -48,7 +49,6 @@ module JavaBuildpack
         with_timing "Expanding Sox to #{@droplet.sandbox.relative_path_from(@droplet.root)}" do
           Dir.mktmpdir do |root|
             root_path = Pathname.new(root)
-	    FileUtils.mkdir_p("sox")
 	    shell "tar xzf #{file.path} -C #{@droplet.sandbox}"
             #unpack_agent root_path
           end
