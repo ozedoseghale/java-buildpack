@@ -48,7 +48,7 @@ module JavaBuildpack
         with_timing "Expanding Sox to #{@droplet.sandbox.relative_path_from(@droplet.root)}" do
           Dir.mktmpdir do |root|
             root_path = Pathname.new(root)
-	    shell "tar xzf #{file.path} -C #{@droplet.sandbox}
+	    shell "tar xzf #{file.path} -C #{@droplet.sandbox}"
             #unpack_agent root_path
           end
         end
