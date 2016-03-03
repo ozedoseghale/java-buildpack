@@ -46,10 +46,10 @@ module JavaBuildpack
       private
 
       def expand(file)
-        with_timing "Expanding Sox to #{@droplet.sandbox.relative_path_from(@droplet.root)}" do
+        with_timing "Expanding Sox to #{@droplet.root}" do
           Dir.mktmpdir do |root|
             root_path = Pathname.new(root)
-	    shell "tar xzf #{file.path} -C #{root_path}"
+	    shell "tar xzf #{file.path} -C #{@droplet.root}"
             #unpack_agent root_path
           end
         end
